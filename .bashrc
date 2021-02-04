@@ -9,6 +9,9 @@ fi
 alias fuck='sudo history -p \!\!'
 export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 
+# enable oc completion
+[ -x "$(which oc)" ] && eval "$(oc completion bash)"
+
 # KREW path
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
