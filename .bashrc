@@ -5,6 +5,19 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+## Eternal bash history
+# undocumented feature which sets the size to unlimited
+export HISTFILESIZE=
+export HISTSIZE=
+
+# add timestamps to every executed command
+export HISTTIMEFORMAT="[%F %T] "                                                                                                                                                                                  
+
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 # User specific aliases and functions
 alias fuck='sudo history -p \!\!'
 export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
