@@ -26,7 +26,7 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 [ -x "$(which oc)" ] && eval "$(oc completion bash)"
 
 # KREW path
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+[ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # get current branch in git repo
 function parse_git_branch() {
