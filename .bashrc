@@ -25,6 +25,24 @@ export HISTFILE=~/.bash_eternal_history
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 
+## Eternal bash history
+# undocumented feature which sets the size to unlimited
+export HISTFILESIZE=
+export HISTSIZE=
+
+# add timestamps to every executed command
+export HISTTIMEFORMAT="[%F %T] "
+
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# Start/attach tmux session ssh_tmux if logged in via ssh
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+  tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi
+
 # User specific aliases and functions
 alias fuck='sudo history -p \!\!'
 export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
@@ -37,7 +55,7 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 [ -x "$(which yq)" ] && eval "$(yq completion bash)"
 
 # KREW path
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+[ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # get current branch in git repo
 function parse_git_branch() {
