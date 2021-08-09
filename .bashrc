@@ -1,13 +1,40 @@
-# .bashrc
+#        __               __
+#       / /_  ____ ______/ /_  __________
+#      / __ \/ __ `/ ___/ __ \/ ___/ ___/
+#   _ / /_/ / /_/ (__  ) / / / /  / /_
+#  (_)_.___/\__,_/____/_/ /_/_/   \___/
+#
+# Lars Bohnsack
+# 2021-08-09
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
+## Eternal bash history
+# undocumented feature which sets the size to unlimited
+export HISTFILESIZE=
+export HISTSIZE=
+
+# add timestamps to every executed command
+export HISTTIMEFORMAT="[%F %T] "
+
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 
 # User specific aliases and functions
 alias fuck='sudo history -p \!\!'
 export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
+
+## Completions
+# enable oc completion
+[ -x "$(which oc)" ] && eval "$(oc completion bash)"
+
+# enable yq completion
+[ -x "$(which yq)" ] && eval "$(yq completion bash)"
 
 # KREW path
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
