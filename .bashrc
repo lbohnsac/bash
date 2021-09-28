@@ -11,6 +11,10 @@
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
+
+# set TERM to xterm-256color
+export TERM=xterm-256color
+
 ## Eternal bash history
 # undocumented feature which sets the size to unlimited
 export HISTFILESIZE=
