@@ -56,7 +56,7 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 [ -x "$(which oc)" ] && eval "$(oc completion bash)"
 
 # enable yq completion
-[ -x "$(which yq)" ] && eval "$(yq completion bash)"
+[ -x "$(which yq)" ] && eval "$(yq shell-completion bash)"
 
 # KREW path
 [ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
