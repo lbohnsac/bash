@@ -28,7 +28,6 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-
 ## Eternal bash history
 # undocumented feature which sets the size to unlimited
 export HISTFILESIZE=
@@ -56,6 +55,7 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 [ -x "$(which oc)" ] && eval "$(oc completion bash)"
 
 # enable yq completion
+# Instructions to download here: https://github.com/mikefarah/yq#download-the-latest-binary
 [ -x "$(which yq)" ] && eval "$(yq shell-completion bash)"
 
 # KREW path
