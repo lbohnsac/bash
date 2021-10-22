@@ -52,11 +52,11 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 
 ## Completions
 # enable oc completion
-[ -x "$(which oc)" ] && eval "$(oc completion bash)"
+[ -x "$(which oc 2>/dev/null)" ] && eval "$(oc completion bash)"
 
 # enable yq completion
 # Instructions to download here: https://github.com/mikefarah/yq#download-the-latest-binary
-[ -x "$(which yq)" ] && eval "$(yq shell-completion bash)"
+[ -x "$(which yq 2>/dev/null)" ] && eval "$(yq shell-completion bash)"
 
 # KREW path
 [ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
