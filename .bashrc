@@ -28,6 +28,7 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
+## tmux specific
 # Start/attach tmux session ssh_tmux if logged in via ssh
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
