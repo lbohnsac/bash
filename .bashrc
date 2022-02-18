@@ -34,6 +34,10 @@ if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
 
+# set standard editor to vim (what else?)
+export EDITOR='vim'
+export VISUAL='vim'
+
 # User specific aliases and functions
 alias fuck='sudo history -p \!\!'
 export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
