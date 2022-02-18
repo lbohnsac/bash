@@ -15,7 +15,9 @@ fi
 # set TERM to xterm-256color
 export TERM=xterm-256color
 
-## Eternal bash history
+###########################
+## ETERNAL BASH HIOSTORY ##
+###########################
 # undocumented feature which sets the size to unlimited
 export HISTFILESIZE=
 export HISTSIZE=
@@ -28,7 +30,9 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-## tmux specific
+##########
+## TMUX ##
+##########
 # Start/attach tmux session ssh_tmux if logged in via ssh
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
@@ -42,7 +46,9 @@ export VISUAL='vim'
 alias fuck='sudo history -p \!\!'
 export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 
-## Completions
+#################
+## COMPLETIONS ##
+#################
 # enable oc completion
 [ -x "$(which oc 2>/dev/null)" ] && eval "$(oc completion bash)"
 
@@ -53,6 +59,9 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 # KREW path
 [ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+#########
+## GIT ##
+#########
 # get current branch in git repo
 function parse_git_branch() {
   BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
@@ -100,4 +109,7 @@ function parse_git_dirty {
   fi
 }
 
+############
+## PROMPT ##
+############
 export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \[\033[01;34m\]\t \[\033[01;33m\] \W \[\033[00m\]\[\033[01;31m\]\$(parse_git_branch)\[\033[00m\] $ "
