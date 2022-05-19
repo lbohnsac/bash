@@ -56,6 +56,11 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 # Instructions to download here: https://github.com/mikefarah/yq#download-the-latest-binary
 [ -x "$(which yq 2>/dev/null)" ] && eval "$(yq shell-completion bash)"
 
+# enable helm completion
+# Download it here: https://github.com/helm/helm/releases
+# Or here: https://mirror.openshift.com/pub/openshift-v4/clients/helm/
+[ -x "$(which helm 2>/dev/null)" ] && eval "$(helm completion bash)"
+
 # KREW path
 [ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
