@@ -5,7 +5,7 @@
 #  (_)_.___/\__,_/____/_/ /_/_/   \___/
 #
 # Lars Bohnsack
-# 2021-08-09
+# 2023-07-13
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -38,13 +38,27 @@ if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
 
+############
+## EDITOR ##
+############
 # set standard editor to vim (what else?)
 export EDITOR='vim'
 export VISUAL='vim'
 
-# User specific aliases and functions
+#############
+## ALIASES ##
+#############
+# User specific aliases
 alias fuck='sudo history -p \!\!'
-export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
+
+#################
+## Export path ##
+#################
+# export CodeReadyContainers path
+[ -f "$HOME/Projects/CodeReadyContainers" ] && export PATH=$PATH:$HOME/Projects/CodeReadyContainers
+
+# export KREW path
+[ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 #################
 ## COMPLETIONS ##
@@ -61,12 +75,9 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 # Or here: https://mirror.openshift.com/pub/openshift-v4/clients/helm/
 [ -x "$(which helm 2>/dev/null)" ] && eval "$(helm completion bash)"
 
-# KREW path
-[ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-###################
-# CHECK FUNCTIONS #
-###################
+#####################
+## CHECK FUNCTIONS ##
+#####################
 # Check the given md5 sum of a given file
 # e.g. md5check <CHECKSUM> <FILENAME>
 # Output will be <FILENAME>: OK or FAILED
