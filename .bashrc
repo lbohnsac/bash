@@ -64,6 +64,51 @@ export PATH=$PATH:/home/lbohnsac/Projects/CodeReadyContainers
 # KREW path
 [ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+###################
+# CHECK FUNCTIONS #
+###################
+# Check the given md5 sum of a given file
+# e.g. md5check <CHECKSUM> <FILENAME>
+# Output will be <FILENAME>: OK or FAILED
+[ -x "$(which md5sum 2>/dev/null)" ] && function md5check() {
+  echo "$1  $2" | md5sum --check
+}
+
+# Check the given sha1 sum of a given file
+# e.g. sha1check <CHECKSUM> <FILENAME>
+# Output will be <FILENAME>: OK or FAILED
+[ -x "$(which sha1sum 2>/dev/null)" ] && function sha1check() {
+  echo "$1  $2" | sha1sum --check
+}
+
+# Check the given sha224 sum of a given file
+# e.g. sha224check <CHECKSUM> <FILENAME>
+# Output will be <FILENAME>: OK or FAILED
+[ -x "$(which sha224sum 2>/dev/null)" ] && function sha224check() {
+  echo "$1  $2" | sha224sum --check
+}
+
+# Check the given sha256 sum of a given file                                                                                                                                                                       
+# e.g. sha256check <CHECKSUM> <FILENAME>
+# Output will be <FILENAME>: OK or FAILED
+[ -x "$(which sha256sum 2>/dev/null)" ] && function sha256check() {
+  echo "$1  $2" | sha256sum --check
+}
+
+# Check the given sha384 sum of a given file
+# e.g. sha384check <CHECKSUM> <FILENAME>
+# Output will be <FILENAME>: OK or FAILED
+[ -x "$(which sha384sum 2>/dev/null)" ] && function sha384check() {
+  echo "$1  $2" | sha384sum --check
+}
+
+# Check the given sha512 sum of a given file
+# e.g. sha512check <CHECKSUM> <FILENAME>
+# Output will be <FILENAME>: OK or FAILED
+[ -x "$(which sha512sum 2>/dev/null)" ] && function sha512check() {
+  echo "$1  $2" | sha512sum --check
+}
+
 #########
 ## GIT ##
 #########
