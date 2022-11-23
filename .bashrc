@@ -44,6 +44,7 @@ fi
 # set standard editor to vim (what else?)
 export EDITOR='vim'
 export VISUAL='vim'
+export SYSTEMD_EDITOR='vim'
 
 #############
 ## ALIASES ##
