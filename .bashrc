@@ -7,81 +7,23 @@
 # Lars Bohnsack
 # 2023-03-11
 
-# Source global definitions
+
+###############################
+## Source global definitions ##
+###############################
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# set TERM to xterm-256color
-export TERM=xterm-256color
-
-###########
-## ALIAS ##
-###########
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fuck='sudo history -p \!\!'
-
-###########################
-## ETERNAL BASH HISTORY ##
-###########################
-# undocumented feature which sets the size to unlimited
-export HISTFILESIZE=
-export HISTSIZE=
-
-# add timestamps to every executed command
-export HISTTIMEFORMAT="[%F %T] "
-
-# Change the file location because certain bash sessions truncate .bash_history file upon close.
-export HISTFILE=~/.bash_eternal_history
-# Force prompt to write history after every command.
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-
-##########
-## TMUX ##
-##########
-# Start/attach tmux session ssh_tmux if logged in via ssh
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-  tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
-fi
-
-############
-## EDITOR ##
-############
-# set standard editor to vim (what else?)
-export EDITOR='vim'
-export VISUAL='vim'
-export SYSTEMD_EDITOR='vim'
 
 #############
 ## ALIASES ##
 #############
 # User specific aliases
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias fuck='sudo history -p \!\!'
 
-#################
-## Export path ##
-#################
-# export CodeReadyContainers path
-[ -f "$HOME/Projects/CodeReadyContainers" ] && export PATH=$PATH:$HOME/Projects/CodeReadyContainers
-
-# export KREW path
-[ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-#################
-## COMPLETIONS ##
-#################
-# enable oc completion
-[ -x "$(which oc 2>/dev/null)" ] && eval "$(oc completion bash)"
-
-# enable yq completion
-# Instructions to download here: https://github.com/mikefarah/yq#download-the-latest-binary
-[ -x "$(which yq 2>/dev/null)" ] && eval "$(yq shell-completion bash)"
-
-# enable helm completion
-# Download it here: https://github.com/helm/helm/releases
-# Or here: https://mirror.openshift.com/pub/openshift-v4/clients/helm/
-[ -x "$(which helm 2>/dev/null)" ] && eval "$(helm completion bash)"
 
 #####################
 ## CHECK FUNCTIONS ##
@@ -127,6 +69,58 @@ alias fuck='sudo history -p \!\!'
 [ -x "$(which sha512sum 2>/dev/null)" ] && function sha512check() {
   echo "$1  $2" | sha512sum --check
 }
+
+
+#################
+## COMPLETIONS ##
+#################
+# enable oc completion
+[ -x "$(which oc 2>/dev/null)" ] && eval "$(oc completion bash)"
+
+# enable yq completion
+# Instructions to download here: https://github.com/mikefarah/yq#download-the-latest-binary
+[ -x "$(which yq 2>/dev/null)" ] && eval "$(yq shell-completion bash)"
+
+# enable helm completion
+# Download it here: https://github.com/helm/helm/releases
+# Or here: https://mirror.openshift.com/pub/openshift-v4/clients/helm/
+[ -x "$(which helm 2>/dev/null)" ] && eval "$(helm completion bash)"
+
+
+############
+## EDITOR ##
+############
+# set standard editor to vim (what else?)
+export EDITOR='vim'
+export VISUAL='vim'
+export SYSTEMD_EDITOR='vim'
+
+
+###########################
+## ETERNAL BASH HISTORY ##
+###########################
+# undocumented feature which sets the size to unlimited
+export HISTFILESIZE=
+export HISTSIZE=
+
+# add timestamps to every executed command
+export HISTTIMEFORMAT="[%F %T] "
+
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+
+#################
+## Export path ##
+#################
+# export CodeReadyContainers path
+[ -f "$HOME/Projects/CodeReadyContainers" ] && export PATH=$PATH:$HOME/Projects/CodeReadyContainers
+
+# export KREW path
+[ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 
 #########
 ## GIT ##
@@ -178,7 +172,24 @@ function parse_git_dirty {
   fi
 }
 
+
 ############
 ## PROMPT ##
 ############
 export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \[\033[01;34m\]\t \[\033[01;33m\] \W \[\033[00m\]\[\033[01;31m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+
+##############
+## TERMINAL ##
+##############
+# set TERM to xterm-256color
+export TERM=xterm-256color
+
+
+##########
+## TMUX ##
+##########
+# Start/attach tmux session ssh_tmux if logged in via ssh
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+  tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi
