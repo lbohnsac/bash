@@ -5,7 +5,7 @@
 #  (_)_.___/\__,_/____/_/ /_/_/   \___/
 #
 # Lars Bohnsack
-# 2023-07-13
+# 2023-03-11
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -14,6 +14,13 @@ fi
 
 # set TERM to xterm-256color
 export TERM=xterm-256color
+
+###########
+## ALIAS ##
+###########
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fuck='sudo history -p \!\!'
 
 ###########################
 ## ETERNAL BASH HISTORY ##
