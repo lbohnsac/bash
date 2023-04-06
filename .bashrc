@@ -49,7 +49,7 @@ alias fuck='sudo history -p \!\!'
   echo "$1  $2" | sha224sum --check
 }
 
-# Check the given sha256 sum of a given file                                                                                                                                                                       
+# Check the given sha256 sum of a given file
 # e.g. sha256check <CHECKSUM> <FILENAME>
 # Output will be <FILENAME>: OK or FAILED
 [ -x "$(which sha256sum 2>/dev/null)" ] && function sha256check() {
