@@ -173,6 +173,12 @@ function parse_git_dirty {
 }
 
 
+###############
+## GPG stuff ##
+###############
+export GPG_TTY="$(tty)"
+
+
 ############
 ## PROMPT ##
 ############
