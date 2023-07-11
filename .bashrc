@@ -5,7 +5,7 @@
 #  (_)_.___/\__,_/____/_/ /_/_/   \___/
 #
 # Lars Bohnsack
-# 2023-03-11
+# 2023-07-11
 
 
 ###############################
@@ -189,7 +189,7 @@ export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \
 ## SSH stuff ##
 ###############
 # Start ssh-agent if available and not running
-[ -x "$(which ssh-agent 2>/dev/null)" ] && ps auxww | grep -v grep | grep ${SSH_AGENT_PID} > /dev/null || eval $(ssh-agent) > /dev/null
+[ -x "$(which ssh-agent 2>/dev/null)" ] && ps auxww | grep -v grep | grep ${SSH_AGENT_PID} > /dev/null 2>&1 || eval $(ssh-agent) > /dev/null
 
 
 ##############
