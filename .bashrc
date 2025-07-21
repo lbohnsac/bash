@@ -85,6 +85,9 @@ alias fuck='eval sudo $(history -p \!\!)' 2>/dev/null
 # enable oc completion
 [ -x "$(which oc 2>/dev/null)" ] && eval "$(oc completion bash)"
 
+# enable virtctl completion
+[ -x "$(which virtctl 2>/dev/null)" ] && eval "$(virtctl completion bash)"
+
 # enable yq completion
 # Instructions to download here: https://github.com/mikefarah/yq#download-the-latest-binary
 [ -x "$(which yq 2>/dev/null)" ] && eval "$(yq shell-completion bash)"
