@@ -5,7 +5,7 @@
 #  (_)_.___/\__,_/____/_/ /_/_/   \___/
 #
 # Lars Bohnsack
-# 2025-05-26
+# 2025-09-25
 
 
 ###############################
@@ -84,6 +84,10 @@ alias fuck='eval sudo $(history -p \!\!)' 2>/dev/null
 #################
 # enable oc completion
 [ -x "$(which oc 2>/dev/null)" ] && eval "$(oc completion bash)"
+
+# enable omc completion
+# Instructions to download here: https://github.com/gmeghnag/omc?tab=readme-ov-file#linux--os-x                                                                                                                    
+[ -x "$(which omc 2>/dev/null)" ] && eval "$(omc completion bash)"
 
 # enable virtctl completion
 [ -x "$(which virtctl 2>/dev/null)" ] && eval "$(virtctl completion bash)"
