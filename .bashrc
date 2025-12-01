@@ -137,6 +137,13 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 [ -f "$HOME/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
+#####################
+## Export env vars ##
+#####################
+# sealed secrets on openshift
+export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets
+
+
 ##################################################################
 ## Fix bash: __vte_prompt_command: command not found... in tmux ##
 ##################################################################
@@ -214,13 +221,6 @@ then # you are root
 else # you are root
   export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \[\033[01;34m\]\t \[\033[01;33m\] \W \[\033[00m\]\[\033[01;31m\]\$(parse_git_branch)\[\033[00m\] $ "
 fi
-
-
-####################
-## sealed secrets ##
-####################
-# if sealed secrets controller is on openshift
-export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets
 
 
 ###############
