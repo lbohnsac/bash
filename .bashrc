@@ -216,6 +216,13 @@ else # you are root
 fi
 
 
+####################
+## sealed secrets ##
+####################
+# if sealed secrets controller is on openshift
+export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets
+
+
 ###############
 ## SSH stuff ##
 ###############
