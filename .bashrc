@@ -5,7 +5,7 @@
 #  (_)_.___/\__,_/____/_/ /_/_/   \___/
 #
 # Lars Bohnsack
-# 2025-09-25
+# 2025-12-04
 
 
 ###############################
@@ -277,6 +277,6 @@ export TERM=xterm-256color
 ## TMUX ##
 ##########
 # Start/attach tmux session ssh_tmux if logged in via ssh
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
