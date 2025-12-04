@@ -222,6 +222,42 @@ else # you are root
   export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \[\033[01;34m\]\t \[\033[01;33m\] \W \[\033[00m\]\[\033[01;31m\]\$(parse_git_branch)\[\033[00m\] $ "
 fi
 
+###########
+## Proxy ##
+###########
+function proxy_show(){
+  env | grep -e _PROXY -e _proxy | sort
+}
+function proxy_on(){
+  export HTTP_PROXY=''
+  export HTTPS_PROXY=''
+  export FTP_PROXY=''
+  export NO_PROXY='localhost,127.0.0.0/8,::1'
+
+  export http_proxy=${HTTP_PROXY}
+  export https_proxy=${HTTPS_PROXY}
+  export ftp_proxy=${FTP_PROXY}
+  export no_proxy=${NO_PROXY}                                                                                                                                                                                      
+
+  echo -e "\nThese proxy-related environment variables are set."
+  proxy_show
+}
+
+function proxy_off(){
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset FTP_PROXY
+  unset NO_PROXY
+
+  unset http_proxy
+  unset https_proxy
+  unset ftp_proxy
+  unset no_proxy
+
+  proxy_show
+  echo -e "\nProxy-related environment variables are removed."
+}
+
 
 ###############
 ## SSH stuff ##
