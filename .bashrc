@@ -5,7 +5,7 @@
 #  (_)_.___/\__,_/____/_/ /_/_/   \___/
 #
 # Lars Bohnsack
-# 2025-12-04
+# 2025-12-05
 
 
 ###############################
@@ -218,7 +218,7 @@ export GPG_TTY="$(tty)"
 if [ $(id -u) -eq 0 ]
 then # you are root
   export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \[\033[01;34m\]\t \[\033[01;33m\] \W \[\033[00m\]\[\033[01;31m\]\$(type -t parse_git_branch &>/dev/null && parse_git_branch)\[\033[00m\] \[\033[01;31m\]#\[\033[01;00m\] "
-else # you are root
+else # you are not root
   export PS1="\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;32m\]\H \[\033[01;34m\] \[\033[01;34m\]\t \[\033[01;33m\] \W \[\033[00m\]\[\033[01;31m\]\$(type -t parse_git_branch &>/dev/null && parse_git_branch)\[\033[00m\] $ "
 fi
 
